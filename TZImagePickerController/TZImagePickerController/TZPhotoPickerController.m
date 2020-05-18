@@ -82,7 +82,7 @@ static CGFloat itemMargin = 5;
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
     _isSelectOriginalPhoto = tzImagePickerVc.isSelectOriginalPhoto;
     _shouldScrollToBottom = YES;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor clearColor];
     self.navigationItem.title = _model.name;
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:tzImagePickerVc.cancelBtnTitleStr style:UIBarButtonItemStylePlain target:tzImagePickerVc action:@selector(cancelButtonClick)];
     [TZCommonTools configBarButtonItem:cancelItem tzImagePickerVc:tzImagePickerVc];
@@ -167,12 +167,12 @@ static CGFloat itemMargin = 5;
 - (void)configCollectionView {
     _layout = [[UICollectionViewFlowLayout alloc] init];
     _collectionView = [[TZCollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:_layout];
-    _collectionView.backgroundColor = [UIColor whiteColor];
+    _collectionView.backgroundColor = [UIColor clearColor];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.alwaysBounceHorizontal = NO;
     _collectionView.contentInset = UIEdgeInsetsMake(itemMargin, itemMargin, itemMargin, itemMargin);
-    
+    _collectionView.showsHorizontalScrollIndicator = NO;
     if (_showTakePhotoBtn) {
         _collectionView.contentSize = CGSizeMake(self.view.tz_width, ((_model.count + self.columnNumber) / self.columnNumber) * self.view.tz_width);
     } else {
@@ -276,7 +276,7 @@ static CGFloat itemMargin = 5;
     
     _divideLine = [[UIView alloc] init];
     CGFloat rgb2 = 222 / 255.0;
-    _divideLine.backgroundColor = [UIColor colorWithRed:rgb2 green:rgb2 blue:rgb2 alpha:1.0];
+    
     
     [_bottomToolBar addSubview:_divideLine];
     [_bottomToolBar addSubview:_previewButton];
@@ -294,6 +294,7 @@ static CGFloat itemMargin = 5;
     switch (tzImagePickerVc.interfaceStyle) {
             
         case TZUserInterfaceStyleLight:
+            self.view.backgroundColor = UIColor.whiteColor;
             _bottomToolBar.backgroundColor = [UIColor colorWithRed: 253 / 255.0 green: 253 / 255.0 blue: 253 / 255.0 alpha:1.0];
             [_previewButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [_previewButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
@@ -304,8 +305,10 @@ static CGFloat itemMargin = 5;
             if (_originalPhotoLabel != nil) {
                 _originalPhotoLabel.textColor = [UIColor blackColor];
             }
+            _divideLine.backgroundColor = [UIColor colorWithRed:rgb2 green:rgb2 blue:rgb2 alpha:1.0];
             break;
         case TZUserInterfaceStyleDark:
+            self.view.backgroundColor = UIColor.blackColor;
             _bottomToolBar.backgroundColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.247 alpha:1.000];
             [_previewButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [_previewButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
@@ -316,6 +319,7 @@ static CGFloat itemMargin = 5;
             if (_originalPhotoLabel != nil) {
                 _originalPhotoLabel.textColor = [UIColor whiteColor];
             }
+            _divideLine.backgroundColor = UIColor.darkGrayColor;
             break;
     }
 }

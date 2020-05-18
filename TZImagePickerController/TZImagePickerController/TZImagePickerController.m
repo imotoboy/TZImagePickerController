@@ -74,12 +74,14 @@
         case TZUserInterfaceStyleLight:
             self.navigationBar.barStyle = UIBarStyleBlack;
             self.navigationBar.barTintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+            self.view.backgroundColor = UIColor.whiteColor;
             [self setBarItemTextColor: UIColor.blackColor];
             [self setNaviTitleColor: UIColor.blackColor];
             break;
         case TZUserInterfaceStyleDark:
             self.navigationBar.barStyle = UIBarStyleBlack;
             [self.navigationBar setTranslucent: YES];
+            self.view.backgroundColor = UIColor.blackColor;
             self.navigationBar.barTintColor = [UIColor colorWithRed:0.110 green:0.110 blue:0.118 alpha:1.000];
             break;
     }

@@ -265,7 +265,7 @@
     // imagePickerVc.navigationBar.tintColor = [UIColor blackColor];
     // imagePickerVc.naviBgColor = [UIColor whiteColor];
     // imagePickerVc.navigationBar.translucent = NO;
-    imagePickerVc.interfaceStyle = TZUserInterfaceStyleLight;
+    imagePickerVc.interfaceStyle = TZUserInterfaceStyleDark;
     
 #pragma mark - 五类个性化设置，这些参数都可以不传，此时会走默认设置
     imagePickerVc.isSelectOriginalPhoto = _isSelectOriginalPhoto;
