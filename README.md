@@ -24,12 +24,9 @@
 
 ## 一. Installation 安装
 
-#### CocoaPods
-> pod 'TZImagePickerController'   #iOS8 and later        
-> pod 'TZImagePickerController', '2.2.6'   #iOS6、iOS7        
 
 #### Carthage
-> github "imotoboy/TZImagePickerController"
+> github "imotoboy/TZImagePickerController" "master"
 
 #### 手动安装
 > 将TZImagePickerController文件夹拽入项目中，导入头文件：#import "TZImagePickerController.h"
