@@ -82,7 +82,7 @@
             self.navigationBar.barStyle = UIBarStyleBlack;
             [self.navigationBar setTranslucent: YES];
             self.view.backgroundColor = UIColor.blackColor;
-            self.navigationBar.barTintColor = [UIColor colorWithRed:0.110 green:0.110 blue:0.118 alpha:1.000];
+            self.navigationBar.barTintColor = UIColor.blackColor;
             break;
     }
 }

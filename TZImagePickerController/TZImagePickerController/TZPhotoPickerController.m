@@ -309,7 +309,7 @@ static CGFloat itemMargin = 5;
             break;
         case TZUserInterfaceStyleDark:
             self.view.backgroundColor = UIColor.blackColor;
-            _bottomToolBar.backgroundColor = [UIColor colorWithRed:0.239 green:0.239 blue:0.247 alpha:1.000];
+            _bottomToolBar.backgroundColor = [UIColor blackColor];
             [_previewButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [_previewButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
             if (_originalPhotoButton != nil) {
@@ -319,7 +319,7 @@ static CGFloat itemMargin = 5;
             if (_originalPhotoLabel != nil) {
                 _originalPhotoLabel.textColor = [UIColor whiteColor];
             }
-            _divideLine.backgroundColor = UIColor.darkGrayColor;
+            _divideLine.backgroundColor = [UIColor colorWithRed:0.471 green:0.471 blue:0.474 alpha:0.7];
             break;
     }
 }
@@ -380,7 +380,7 @@ static CGFloat itemMargin = 5;
     _doneButton.frame = CGRectMake(self.view.tz_width - _doneButton.tz_width - 12, 0, _doneButton.tz_width, 50);
     _numberImageView.frame = CGRectMake(_doneButton.tz_left - 24 - 5, 13, 24, 24);
     _numberLabel.frame = _numberImageView.frame;
-    _divideLine.frame = CGRectMake(0, 0, self.view.tz_width, 1);
+    _divideLine.frame = CGRectMake(0, 0, self.view.tz_width, 0.5);
     
     [TZImageManager manager].columnNumber = [TZImageManager manager].columnNumber;
     [TZImageManager manager].photoWidth = tzImagePickerVc.photoWidth;
