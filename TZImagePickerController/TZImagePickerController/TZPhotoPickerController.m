@@ -512,6 +512,8 @@ static CGFloat itemMargin = 5;
         } else {
             cell.imageView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
         }
+        cell.layer.cornerRadius = 10.0;
+        cell.layer.masksToBounds = YES;
         return cell;
     }
     // the cell dipaly photo or video / 展示照片或视频的cell

@@ -31,6 +31,8 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload:) name:@"TZ_PHOTO_PICKER_RELOAD_NOTIFICATION" object:nil];
+    self.layer.cornerRadius = 10.0;
+    self.layer.masksToBounds = true;
     return self;
 }
 
@@ -256,6 +258,8 @@
         UIImageView *selectImageView = [[UIImageView alloc] init];
         selectImageView.contentMode = UIViewContentModeCenter;
         selectImageView.clipsToBounds = YES;
+        selectImageView.layer.cornerRadius = 10.0;
+        selectImageView.layer.masksToBounds = true;
         [self.contentView addSubview:selectImageView];
         _selectImageView = selectImageView;
     }
@@ -334,7 +338,7 @@
     } else {
         _selectPhotoButton.frame = self.bounds;
     }
-    _selectImageView.frame = CGRectMake(self.tz_width - 27, 3, 24, 24);
+    _selectImageView.frame = CGRectMake(self.tz_width - 26.0, 6.0, 20.0, 20.0);
     if (_selectImageView.image.size.width <= 27) {
         _selectImageView.contentMode = UIViewContentModeCenter;
     } else {
