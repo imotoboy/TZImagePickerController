@@ -308,7 +308,7 @@ static CGFloat itemMargin = 5;
             _divideLine.backgroundColor = [UIColor colorWithRed:rgb2 green:rgb2 blue:rgb2 alpha:1.0];
             break;
         case TZUserInterfaceStyleDark:
-            self.view.backgroundColor = UIColor.blackColor;
+            self.view.backgroundColor = [UIColor colorWithRed:0.110 green:0.110 blue:0.118 alpha:1.000];
             _bottomToolBar.backgroundColor = [UIColor blackColor];
             [_previewButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [_previewButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
