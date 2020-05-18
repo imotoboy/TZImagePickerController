@@ -29,7 +29,7 @@
 > pod 'TZImagePickerController', '2.2.6'   #iOS6、iOS7        
 
 #### Carthage
-> github "banchichen/TZImagePickerController"
+> github "imotoboy/TZImagePickerController"
 
 #### 手动安装
 > 将TZImagePickerController文件夹拽入项目中，导入头文件：#import "TZImagePickerController.h"
