@@ -52,7 +52,7 @@
     [super viewDidLoad];
     self.needShowStatusBar = ![UIApplication sharedApplication].statusBarHidden;
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationBar.barStyle = UIBarStyleBlack;
+   //  self.navigationBar.barStyle = UIBarStyleDefault;
     self.navigationBar.translucent = YES;
     [TZImageManager manager].shouldFixOrientation = NO;
 
@@ -61,10 +61,28 @@
     self.oKButtonTitleColorNormal   = [UIColor colorWithRed:(83/255.0) green:(179/255.0) blue:(17/255.0) alpha:1.0];
     self.oKButtonTitleColorDisabled = [UIColor colorWithRed:(83/255.0) green:(179/255.0) blue:(17/255.0) alpha:0.5];
     
-    self.navigationBar.barTintColor = [UIColor colorWithRed:(34/255.0) green:(34/255.0)  blue:(34/255.0) alpha:1.0];
+   //  self.navigationBar.barTintColor = [UIColor colorWithRed:(34/255.0) green:(34/255.0)  blue:(34/255.0) alpha:1.0];
     self.navigationBar.tintColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     if (self.needShowStatusBar) [UIApplication sharedApplication].statusBarHidden = NO;
+    
+}
+
+- (void)setInterfaceStyle:(TZUserInterfaceStyle)interfaceStyle {
+    _interfaceStyle = interfaceStyle;
+    switch (interfaceStyle) {
+        case TZUserInterfaceStyleLight:
+            self.navigationBar.barStyle = UIBarStyleBlack;
+            self.navigationBar.barTintColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+            [self setBarItemTextColor: UIColor.blackColor];
+            [self setNaviTitleColor: UIColor.blackColor];
+            break;
+        case TZUserInterfaceStyleDark:
+            self.navigationBar.barStyle = UIBarStyleBlack;
+            [self.navigationBar setTranslucent: YES];
+            self.navigationBar.barTintColor = [UIColor colorWithRed:0.110 green:0.110 blue:0.118 alpha:1.000];
+            break;
+    }
 }
 
 - (void)setNaviBgColor:(UIColor *)naviBgColor {
@@ -266,17 +284,18 @@
     self.timeout = 15;
     self.photoWidth = 828.0;
     self.photoPreviewMaxWidth = 600;
-    self.naviTitleColor = [UIColor whiteColor];
-    self.naviTitleFont = [UIFont systemFontOfSize:17];
-    self.barItemTextFont = [UIFont systemFontOfSize:15];
-    self.barItemTextColor = [UIColor whiteColor];
+    // self.naviTitleColor = [UIColor darkTextColor];
+     self.naviTitleFont = [UIFont systemFontOfSize:17];
+     self.barItemTextFont = [UIFont systemFontOfSize:15];
+    // self.barItemTextColor = [UIColor whiteColor];
     self.allowPreview = YES;
     // 2.2.26版本，不主动缩放图片，降低内存占用
     self.notScaleImage = YES;
     self.needFixComposition = NO;
     self.statusBarStyle = UIStatusBarStyleLightContent;
-    self.cannotSelectLayerColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+    self.cannotSelectLayerColor = [[UIColor whiteColor] colorWithAlphaComponent:0.3];
     self.allowCameraLocation = YES;
+    self.interfaceStyle = TZUserInterfaceStyleDark;
     
     self.iconThemeColor = [UIColor colorWithRed:31 / 255.0 green:185 / 255.0 blue:34 / 255.0 alpha:1.0];
     [self configDefaultBtnTitle];
@@ -717,12 +736,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isFirstAppear = YES;
-    self.view.backgroundColor = [UIColor whiteColor];
-    
     TZImagePickerController *imagePickerVc = (TZImagePickerController *)self.navigationController;
+ 
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:imagePickerVc.cancelBtnTitleStr style:UIBarButtonItemStylePlain target:imagePickerVc action:@selector(cancelButtonClick)];
     [TZCommonTools configBarButtonItem:cancelItem tzImagePickerVc:imagePickerVc];
     self.navigationItem.rightBarButtonItem = cancelItem;
+    
+    switch (imagePickerVc.interfaceStyle) {
+            
+        case TZUserInterfaceStyleLight:
+            self.view.backgroundColor = [UIColor whiteColor];
+            break;
+        case TZUserInterfaceStyleDark:
+            self.view.backgroundColor = [UIColor colorWithRed:0.110 green:0.110 blue:0.118 alpha:1.000];
+            break;
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -770,7 +798,7 @@
                 if (!self->_tableView) {
                     self->_tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
                     self->_tableView.rowHeight = 70;
-                    self->_tableView.backgroundColor = [UIColor whiteColor];
+                    self->_tableView.backgroundColor = [UIColor clearColor];
                     self->_tableView.tableFooterView = [[UIView alloc] init];
                     self->_tableView.dataSource = self;
                     self->_tableView.delegate = self;
@@ -830,6 +858,15 @@
     cell.selectedCountButton.backgroundColor = imagePickerVc.iconThemeColor;
     cell.model = _albumArr[indexPath.row];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.backgroundColor = UIColor.clearColor;
+    switch (imagePickerVc.interfaceStyle) {
+        case TZUserInterfaceStyleLight:
+            cell.titleColor = UIColor.darkTextColor;
+            break;
+        case TZUserInterfaceStyleDark:
+             cell.titleColor = UIColor.whiteColor;
+            break;
+    }
     return cell;
 }
 

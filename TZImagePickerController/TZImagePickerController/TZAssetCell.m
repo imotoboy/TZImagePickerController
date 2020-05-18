@@ -389,6 +389,11 @@
     return self;
 }
 
+- (void)setTitleColor:(UIColor *)titleColor {
+    _titleColor = titleColor;
+    self.titleLabel.textColor = titleColor;
+}
+
 - (void)setModel:(TZAlbumModel *)model {
     _model = model;
     
